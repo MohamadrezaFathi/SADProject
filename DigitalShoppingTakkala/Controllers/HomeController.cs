@@ -5,14 +5,23 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using DigitalShoppingTakkala.Models;
+using DigitalShoppingTakkala.Data;
 
 namespace DigitalShoppingTakkala.Controllers
 {
+   
     public class HomeController : Controller
     {
+
+        private MyContext _ctx;
+
+        public HomeController(MyContext ctx)
+        {
+            _ctx = ctx;
+        }
         public IActionResult Index()
         {
-            return View();
+            return View(_ctx.Products);
         }
 
         public IActionResult Privacy()
