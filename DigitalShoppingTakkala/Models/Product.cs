@@ -17,7 +17,7 @@ namespace DigitalShoppingTakkala.Models
         [MaxLength(1000)]
         public string TotalDescription { get; set; }
         [Required]
-        public decimal Price { get; set; }
+        public double Price { get; set; }
         [Required]
         public string Colors { get; set; }
         [Required]
@@ -29,6 +29,11 @@ namespace DigitalShoppingTakkala.Models
         [Required]
         public int BrandId { get; set; }
 
+
+
+        public SubGroup SubGroup { get; set; }
+        public Brand Brand { get; set; }
+        public List<OrderDetail> OrderDetails { get; set; }
 
     }
 }
