@@ -29,21 +29,25 @@
         @if (SignInManager.IsSignedIn(User))
         {
             <li class="nav-item">
-                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">@User.Identity.Name!</a>
+                <a class="nav-link text-danger" style="font-family:'B Yekan';font-size:16px;font-weight:bold;" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">@User.Identity.Name</a>
             </li>
             <li class="nav-item">
                 <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                    <button type="submit" class="nav-link btn btn-link text-dark" style="font-family:'B Yekan';">خروج از حساب کاربری</button>
+                    <button type="submit" class="nav-link btn btn-link text-dark" style="font-family:'B Yekan';">
+                        <i class="fa fa-power-off "></i>
+
+                        خروج از حساب کاربری
+                    </button>
                 </form>
             </li>
         }
         else
         {
             <li class="nav-item">
-                <a class="nav-link text-secondary" asp-area="Identity" asp-page="/Account/Register"> عضویت  <i class="fa fa-sign-in" aria-hidden="true"></i> </a>
+                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register"> عضویت  <i class="fa fa-sign-in" aria-hidden="true"></i> </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-secondary" asp-area="Identity" asp-page="/Account/Login"> ورود  <i class="fa fa-user-o" aria-hidden="true"></i></a>
+                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login"> ورود  <i class="fa fa-user-o" aria-hidden="true"></i></a>
             </li>
         }
     </ul>
