@@ -8,11 +8,10 @@
 <div class="text-center">
     @foreach(var item in Model)
     {
-        if (item.Price < 11000000)
-        {
+       
         <p>@item.ProductName</p>
         <img src="~/Images/@item.ImageName" />
-        }
+      
     }
 
 </div>

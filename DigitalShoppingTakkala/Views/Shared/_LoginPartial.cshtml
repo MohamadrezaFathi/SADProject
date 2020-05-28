@@ -33,7 +33,7 @@
             </li>
             <li class="nav-item">
                 <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                    <button type="submit" class="nav-link btn btn-link text-dark" style="font-family:'B Yekan';">
+                    <button type="submit" class="nav-link btn btn-link btn btn-outline-secondary" style="font-family:'B Yekan';">
                         <i class="fa fa-power-off "></i>
 
                         خروج از حساب کاربری
@@ -43,12 +43,15 @@
         }
         else
         {
-            <li class="nav-item">
-                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register"> عضویت  <i class="fa fa-sign-in" aria-hidden="true"></i> </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login"> ورود  <i class="fa fa-user-o" aria-hidden="true"></i></a>
-            </li>
+            
+    <button type="button" class="btn btn-outline-secondary">
+        <li class="nav-item">
+            <a class="nav-link " asp-area="Identity" asp-page="/Account/Login">
+                <i class="fa fa-user-o" aria-hidden="true"></i>
+                ورود به حساب کاربری
+            </a>
+        </li>
+    </button>
         }
     </ul>
     </body>
