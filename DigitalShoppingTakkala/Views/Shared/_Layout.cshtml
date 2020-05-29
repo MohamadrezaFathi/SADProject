@@ -6,10 +6,15 @@
     <title>@ViewData["Title"] - DigitalShoppingTakkala</title>
     <style>
         #div2 a:hover {
-            color:darkblue;
+            color: darkblue;
         }
+
+ 
+        
+
     </style>
 
+    <link rel="stylesheet" href="~/css/site.css" />
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -22,14 +27,14 @@
               crossorigin="anonymous"
               integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" />
     </environment>
-    <link rel="stylesheet" href="~/css/site.css" />
-   
+
+
 </head>
 <body>
     <header>
         <div dir="rtl" class="container" >
 
-            <form style="width:70%;padding-top:15px;">
+            <form style="width: 70%; padding-top: 15px;">
                 <div class="form-group">
                     <input style="font-family:'B Yekan';" class="form-control  text-dark bg-light " type="text" placeholder="جست و جو کنید..."
                            aria-label="Search">
@@ -44,7 +49,7 @@
 
 
 
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-4" style="font-family:'B Yekan;">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-4 navbar-fixed-top" style="font-family:'B Yekan;">
 
 
             <div class="container" dir="rtl" style="        font-family: 'B Yekan';
@@ -136,12 +141,9 @@
 
         </main>
     </div>
+    <br/>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2020 - DigitalShoppingTakkala - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
+    
 
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
