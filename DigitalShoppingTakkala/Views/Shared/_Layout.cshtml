@@ -26,11 +26,14 @@
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
               crossorigin="anonymous"
               integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" />
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     </environment>
 
 
 </head>
-<body>
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
     <header>
         <div dir="rtl" class="container" >
 
@@ -49,11 +52,10 @@
 
 
 
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-4 navbar-fixed-top" style="font-family:'B Yekan;">
+        <nav class="navbar navbar-fixed-top navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-4" style="font-family:'B Yekan;"  data-spy="affix" data-offset-top="197" >
 
 
-            <div class="container" dir="rtl" style="        font-family: 'B Yekan';
-">
+            <div class="container" dir="rtl" style="font-family:'B Yekan';">
 
                 <a class="navbar-brand text-danger " style="font-size:30px;margin-right:-10%;" asp-area="" asp-controller="Home" asp-action="Index"><i>Takkala</i></a>
 
@@ -132,7 +134,7 @@
     </header>
     <div >
         <partial name="_CookieConsentPartial" />
-        <main role="main">
+        <main role="main" class="pb-3" >
            
             
             <div class="col-md-12">
