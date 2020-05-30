@@ -11,7 +11,7 @@ namespace DigitalShoppingTakkala.Models
         [Key]
         public int OrderId { get; set; }
         [Required]
-        public int UserId { get; set; }
+        public string UserId { get; set; }
         [Required]
         public DateTime CreateDate { get; set; }
         [Required]
@@ -21,5 +21,6 @@ namespace DigitalShoppingTakkala.Models
 
         public List<OrderDetail> OrderDetails { get; set; }
 
+       
     }
 }

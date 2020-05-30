@@ -18,6 +18,8 @@ namespace DigitalShoppingTakkala.Models
         public string TotalDescription { get; set; }
         [Required]
         public double Price { get; set; }
+        public double Price2 { get; set; }
+        public int introduceyear { get; set; }
         [Required]
         public string Colors { get; set; }
         [Required]
