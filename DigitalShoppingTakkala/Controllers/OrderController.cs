@@ -81,5 +81,9 @@ namespace DigitalShoppingTakkala.Controllers
             _ctx.Update(order);
             _ctx.SaveChanges();
         }
+        public IActionResult ShowOrder()
+        {
+            return View();
+        }
     }
 }

@@ -1,0 +1,13 @@
+﻿@model IEnumerable<DigitalShoppingTakkala.Models.ViewModels.ShowCardViewModel>
+
+@{
+    int b= 0;
+
+}
+@foreach(var item in Model)
+{
+    b += item.Count;
+
+}
+
+<span class="badge badge-pill badge-success align-text-top " style="font-size:14px;">@b</span>

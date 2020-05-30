@@ -112,9 +112,13 @@
                         </li>
                         <li style="border-left:1px dotted gray;padding-right:15px;"></li>
                         <li class="nav-item  text-dark" style="padding-right:35px;">
-                            <a class="nav-link  text-dark" href="#" aria-haspopup="true" aria-expanded="false" >
-                                <i class="fa fa-shopping-basket" aria-hidden="true"></i>                                
+                            
+                                <a class="nav-link  text-dark" asp-controller="Order" asp-action="ShowOrder" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fa fa-shopping-basket" aria-hidden="true" style="font-size:20px;"></i>
+                                        @await Component.InvokeAsync("CardComponent")
+                                    
 
+                            
                             </a>
                         </li>
                     </ul>
