@@ -1,7 +1,77 @@
 ﻿@model IEnumerable<Product>
-
-@foreach(var item in Model)
-{
-    <p>@item.ProductName</p>
-    <br/>
+@{
+    ViewData["Title"] = "فروشگاه تک کالا";
 }
+<html>
+<head>
+    <style>
+        
+        #panel1 a{
+            font-family:'B Yekan';
+            padding-top:-3px;
+            background-color:rgb(153, 235, 255);
+        }
+        
+    </style>
+</head>
+<body>
+
+    <div class="col-md-3 bg-light" dir="rtl" style="float:right; width:20%;">
+        <div dir="rtl" style="text-align:right;">
+            <h5 class="text-dark" style="font-family:'B Yekan';text-align:center;">مرتب سازی بر اساس :</h5>
+            <div style="width:100%;" id="panel1" class="bg-light">
+                <a class="btn btn-block active" href="@Url.Action("GetAllBySGID","Product",new { sorting="1"})">جدیدترین</a>
+                <a class="btn btn-block" href="@Url.Action("GetAllBySGID","Product",new { sorting="2"})">پرفروش ترین</a>
+                <a class="btn btn-block" href="@Url.Action("GetAllBySGID","Product",new { sorting="4"})">گران ترین</a>
+                <a style="margin-bottom:35px;" class="btn btn-block" href="@Url.Action("GetAllBySGID","Product",new { sorting="5"})">ارزان ترین</a>
+
+
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="col-md-9 bg-light">
+        <div dir="rtl" style="width:100%;">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb bg-light">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#">Library</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Data</li>
+                </ol>
+            </nav>
+        </div>
+
+        <div class="row" style="padding-top:20px;" dir="rtl">
+            @foreach (var item in Model)
+            {
+
+                <div class="col-md-3" style="float:right;font-family:IRANYekan,sans-serif; padding-top:10px;">
+                    <div class="card mb-4 shadow-sm" dir="rtl" >
+                        <a asp-controller="Product" asp-action="GetProductByid" asp-route-id="@item.ProductId">
+                            <img src="~/Images/@item.ImageName" width="100%" height="225" style="padding:7px 7px 7px 7px;" />
+                        </a>
+                        <div class="card-body">
+
+                            <p class="card-text" style="text-align:right;">@item.ProductName</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <small class="text-dark" style="font-weight:bolder;font-family:'B Mitra';">@item.Price2 تومان</small>
+
+                                <div class="btn-group">
+                                    <a asp-controller="Order" asp-action="AddtoCard" asp-route-id="@item.ProductId" class="btn btn-sm btn-outline-danger">+ به سبد خرید</a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            }
+
+        </div>
+
+    </div>
+
+</body>
+</html>
