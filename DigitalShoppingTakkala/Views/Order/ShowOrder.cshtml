@@ -1,0 +1,87 @@
+﻿@model IEnumerable<DigitalShoppingTakkala.Models.ViewModels.ShowOrderViewModel>
+
+@{
+    ViewData["Title"] = "نمایش سبد خرید";
+    int rowcount = 1;
+}
+
+<html>
+<head>
+    <style>
+        body{
+            font-family:IRANYekan,sans-serif;
+        }
+        h2{
+            text-align:center;
+            padding:10px 0px 10px 10px;
+            margin-bottom:20px;
+            
+            
+
+        }
+        table tr th{
+            text-align:center;
+            color:rgb(29, 105, 208);
+        }
+         table tr td{
+            text-align:center;
+            font-family:'B Mitra';
+            font-size:18px;
+
+         }
+    </style>
+</head>
+<body>
+    @if (Model.Count() == 0)
+    {
+        <h2>هیج کالایی در سبد خرید شما وجود ندارد</h2>
+    }
+    else { 
+    <h2>: نمایش سبد خرید شما </h2>
+    <table class="container table table-bordered" dir="rtl">
+        <tr>
+            <th>ردیف کالا</th>
+            <th>تصویر</th>
+            <th>نام کالا</th>
+            <th>تعداد</th>
+            <th>قیمت</th>
+            <th>جمع قیمت کالا</th>
+            <th>ویرایش کالا</th>
+
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@rowcount</td>
+                <td><img src="~/Images/@item.ImageName" style="width:200px;height:200px;" /></td>
+                <td>@item.ProductName</td>
+                <td>@item.Count</td>
+                <td>@item.Price.ToString("#,0") تومان</td>
+                <td> @item.Sum.ToString("#,0") تومان</td>
+                <td style="font-family:'B Yekan';">
+                    <a class="btn btn-danger" asp-action="Delete" asp-controller="Order" asp-route-id="@item.OrderDetailId">حذف کالا</a>
+                    <a class="btn btn-secondary" href="/Order/Editing/@item.OrderDetailId?ud=1">+</a>
+                    <a class="btn btn-secondary" href="/Order/Editing/@item.OrderDetailId?ud=2">-</a>
+
+                </td>
+
+            </tr>
+            rowcount += 1;
+        }
+        <tr style="text-align:center;">
+            <td style="font-family:IRANYekan,sans-serif;" colspan="5">جمع کل سبد خرید :</td>
+            <td colspan="2" style="font-family:'B Mitra';font-size:24px;color:red;"> @Model.Sum(x => x.Sum).ToString("#,0") تومان</td>
+
+
+        </tr>
+    </table>
+
+   
+    
+    
+    }
+</body>
+</html>
+
+

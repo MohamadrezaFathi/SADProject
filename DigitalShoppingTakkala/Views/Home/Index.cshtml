@@ -71,7 +71,7 @@
 
                                             <p class="card-text" style="text-align:right;">@item.ProductName</p>
                                             <div class="d-flex justify-content-between align-items-center">
-                                                <small class="text-dark" style="font-weight:bolder;font-family:'B Mitra';">@item.Price2 تومان</small>
+                                                <small class="text-dark" style="font-weight:bolder;font-family:'B Mitra';">@item.Price2.ToString("#,0") تومان</small>
 
                                                 <div class="btn-group">
                                                     <a asp-controller="Order" asp-action="AddtoCard" asp-route-id="@item.ProductId" class="btn btn-sm btn-outline-danger">+ به سبد خرید</a>
@@ -115,7 +115,7 @@
                                             <p class="card-text" style="text-align:right;">@item.ProductName</p>
                                             <div class="d-flex justify-content-between align-items-center">
                                                
-                                                <small class="text-dark" style="font-weight:bolder;font-family:'B Mitra';">@item.Price2 تومان</small>
+                                                <small class="text-dark" style="font-weight:bolder;font-family:'B Mitra';">@item.Price2.ToString("#,0") تومان</small>
 
                                                 <div class="btn-group">
                                                     <a asp-controller="Order" asp-action="AddtoCard" asp-route-id="@item.ProductId" class="btn btn-sm btn-outline-danger">+ به سبد خرید</a>
@@ -169,7 +169,7 @@
                                                 }
                                                 <p class="text-dark" style="font-weight:bolder;font-family:'B Mitra';text-align:right;"><del class="text-muted"> @item.Price </del><span style="margin-right:5px;font-family:'B Yekan';font-size:16px;" class="badge badge-danger" >@h %</span></p>
 
-                                                <p class="text-dark" style="font-weight:bolder;font-family:'B Mitra';text-align:right;font-size:16px;"> @item.Price2 تومان</p>
+                                                <p class="text-dark" style="font-weight:bolder;font-family:'B Mitra';text-align:right;font-size:16px;"> @item.Price2.ToString("#,0") تومان</p>
 
                                                 <div class="btn-group" style="text-align:center;margin-left:25%;">
                                                     <a asp-controller="Order" asp-action="AddtoCard" asp-route-id="@item.ProductId" class="btn btn-sm btn-outline-primary">+ به سبد خرید</a>

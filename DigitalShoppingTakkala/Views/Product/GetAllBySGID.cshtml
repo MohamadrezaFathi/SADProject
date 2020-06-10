@@ -56,7 +56,7 @@
 
                             <p class="card-text" style="text-align:right;">@item.ProductName</p>
                             <div class="d-flex justify-content-between align-items-center">
-                                <small class="text-dark" style="font-weight:bolder;font-family:'B Mitra';">@item.Price2 تومان</small>
+                                <small class="text-dark" style="font-weight:bolder;font-family:'B Mitra';">@item.Price2.ToString("#,0") تومان</small>
 
                                 <div class="btn-group">
                                     <a asp-controller="Order" asp-action="AddtoCard" asp-route-id="@item.ProductId" class="btn btn-sm btn-outline-danger">+ به سبد خرید</a>
