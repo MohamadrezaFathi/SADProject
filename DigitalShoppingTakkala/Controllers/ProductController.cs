@@ -16,10 +16,36 @@ namespace DigitalShoppingTakkala.Controllers
         {
             _ctx = ctx;
         }
-        public IActionResult GetAllBySGID(int id, string sorting)
+        public IActionResult GetAllBySGID(int id, string sorting,string choiceprice)
         {
             var products = _ctx.Products.Where(p => p.SubGroupId == id).ToList();
             products = products.OrderBy(x => x.Price2).ToList();
+
+            if (!string.IsNullOrEmpty(choiceprice))
+            {
+                if (choiceprice== "1")
+                {
+                    products = products.Where(x => x.Price2 < 1000000).ToList();
+                }
+                if (choiceprice == "2")
+                {
+                    products = products.Where(x => x.Price2 >= 1000000 && x.Price2<=5000000).ToList();
+                }
+
+                if (choiceprice == "3")
+                {
+                    products = products.Where(x => x.Price2 >= 5000000 && x.Price2 <=10000000).ToList();
+                }
+                if (choiceprice == "4")
+                {
+                    products = products.Where(x => x.Price2 >= 10000000 && x.Price2 <= 20000000).ToList();
+                }
+                if (choiceprice == "5")
+                {
+                    products = products.Where(x => x.Price2 >= 20000000).ToList();
+                }
+            }
+
 
             if (!string.IsNullOrEmpty(sorting))
             {
@@ -41,12 +67,14 @@ namespace DigitalShoppingTakkala.Controllers
                     products = products.OrderByDescending(x => x.Price2).ToList();
                 }
             }
-
+           
+            
             else
             {
                 products = products.OrderBy(x => x.ProductId).ToList();
             }
 
+            
             return View(products);
         }
 

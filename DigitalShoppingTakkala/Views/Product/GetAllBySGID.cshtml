@@ -11,6 +11,16 @@
             padding-top:-3px;
             background-color:rgb(153, 235, 255);
         }
+        #pricechoice {
+            margin: 10px 5px 10px 5px;
+            
+            width: 100%;
+            height: auto;
+        }
+        input{
+           margin-bottom:8px;
+           margin-left:5px;
+        }
         
     </style>
 </head>
@@ -18,7 +28,7 @@
 
     <div class="col-md-3 bg-light" dir="rtl" style="float:right; width:20%;">
         <div dir="rtl" style="text-align:right;">
-            <h5 class="text-dark" style="font-family:'B Yekan';text-align:center;">مرتب سازی بر اساس :</h5>
+            <h5 class="text-dark" style="font-family:'B Yekan';text-align:center;margin-top:5px;">مرتب سازی بر اساس </h5>
             <div style="width:100%;" id="panel1" class="bg-light">
                 <a class="btn btn-block active" href="@Url.Action("GetAllBySGID","Product",new { sorting="1"})">جدیدترین</a>
                 <a class="btn btn-block" href="@Url.Action("GetAllBySGID","Product",new { sorting="2"})">پرفروش ترین</a>
@@ -28,6 +38,23 @@
 
             </div>
         </div>
+        <div id="pricechoice" dir="rtl" style="font-family:'B Yekan'"; >
+            <div class="dropdown show">
+                <a style="margin-left:20px;margin-right:-5px;" class="btn btn-secondary btn-block dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                   جست و جو براساس قیمت
+                </a>
+
+                <div class="dropdown-menu btn btn-block" aria-labelledby="dropdownMenuLink" dir="rtl" style="text-align:right;">
+                    <a class="dropdown-item" href="@Url.Action("GetAllBySGID","Product",new { choiceprice="1"})"><i class="fa fa-check-square-o" aria-hidden="true"></i>  کمتر از 1 میلیون تومان</a>
+                    <a class="dropdown-item" href="@Url.Action("GetAllBySGID","Product",new { choiceprice="2"})"><i class="fa fa-check-square-o" aria-hidden="true"></i>  بین 1 تا 5 میلیون تومان</a>
+
+                    <a class="dropdown-item" href="@Url.Action("GetAllBySGID","Product",new { choiceprice="3"})"><i class="fa fa-check-square-o" aria-hidden="true"></i>  بین 5 تا 10 میلیون تومان</a>
+                    <a class="dropdown-item" href="@Url.Action("GetAllBySGID","Product",new { choiceprice="4"})"><i class="fa fa-check-square-o" aria-hidden="true"></i>  بین 10 تا 20 میلیون تومان</a>
+                    <a class="dropdown-item" href="@Url.Action("GetAllBySGID","Product",new { choiceprice="5"})"><i class="fa fa-check-square-o" aria-hidden="true"></i>  بیشتر از 20 میلیون تومان</a>
+                </div>
+            </div>
+        </div>
+       
 
 
     </div>
