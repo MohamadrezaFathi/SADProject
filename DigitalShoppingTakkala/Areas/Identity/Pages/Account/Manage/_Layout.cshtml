@@ -1,0 +1,39 @@
+﻿@{
+    Layout = "/Areas/Identity/Pages/_Layout.cshtml";
+}
+<html>
+<head>
+    <style>
+        
+        h1,h4{
+           font-family: IRANYekan,sans-serif;
+           padding-bottom:10px;
+           
+        }
+        
+        
+    </style>
+</head>
+    <body >
+        <h2 style="text-align:right;">مدیریت پروفایل کاربری</h2>
+
+        <div dir="rtl" >
+            <h5 style="text-align:right;">در این قسمت میتوانید تنظیمات پروفایل کاربری خود را تغییر دهید</h5>
+            <hr />
+            <div class="row">
+                <div class="col-md-3">
+                    <partial name="_ManageNav" />
+                </div>
+                <div class="col-md-9">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+
+        @section Scripts {
+            @RenderSection("Scripts", required: false)
+        }
+    </body>
+
+</html>
+
