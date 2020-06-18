@@ -85,12 +85,12 @@ namespace DigitalShoppingTakkala.Areas.Identity.Pages.Account
                 }
                 if (result.IsLockedOut)
                 {
-                    _logger.LogWarning("User account locked out.");
+                    _logger.LogWarning("این حساب کاربری مسدود شده است");
                     return RedirectToPage("./Lockout");
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    ModelState.AddModelError(string.Empty, "نام کاربری یا رمز عبور اشتباه است");
                     return Page();
                 }
             }

@@ -109,7 +109,7 @@ namespace DigitalShoppingTakkala.Areas.Identity.Pages.Account.Manage
             }
 
             await _signInManager.RefreshSignInAsync(user);
-            StatusMessage = "Your profile has been updated";
+            StatusMessage = "پروفایل کاربری شما با موفقیت تغییر یافت";
             return RedirectToPage();
         }
 
@@ -140,7 +140,7 @@ namespace DigitalShoppingTakkala.Areas.Identity.Pages.Account.Manage
                 "Confirm your email",
                 $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
 
-            StatusMessage = "Verification email sent. Please check your email.";
+            StatusMessage = "ایمیل تاییدیه فرستاده شد.لطفا ایمیل خود را بررسی کنید";
             return RedirectToPage();
         }
     }
