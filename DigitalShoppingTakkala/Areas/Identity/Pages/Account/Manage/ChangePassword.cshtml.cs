@@ -33,20 +33,21 @@ namespace DigitalShoppingTakkala.Areas.Identity.Pages.Account.Manage
 
         public class InputModel
         {
-            [Required]
+            [Required(ErrorMessage = "نوشتن  فیلد رمزعبورفعلی الزامی است")]
             [DataType(DataType.Password)]
             [Display(Name = "Current password")]
             public string OldPassword { get; set; }
 
-            [Required]
-            [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
+            [Required(ErrorMessage = "نوشتن  فیلد رمز عبور جدید الزامی است")]
+            [StringLength(100, ErrorMessage = "رمز عبور  باید شامل حداقل {2} و حداکثر {1} کاراکتر یاشد", MinimumLength = 6)]
             [DataType(DataType.Password)]
             [Display(Name = "New password")]
             public string NewPassword { get; set; }
 
+            [Required(ErrorMessage = "نوشتن  فیلد تکرار رمز عبور جدید الزامی است")]
             [DataType(DataType.Password)]
             [Display(Name = "Confirm new password")]
-            [Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
+            [Compare("NewPassword", ErrorMessage = "رمز عبور جدید و تکرار آن با هم مطابقت ندارند")]
             public string ConfirmPassword { get; set; }
         }
 
@@ -92,7 +93,7 @@ namespace DigitalShoppingTakkala.Areas.Identity.Pages.Account.Manage
 
             await _signInManager.RefreshSignInAsync(user);
             _logger.LogInformation("User changed their password successfully.");
-            StatusMessage = "Your password has been changed.";
+            StatusMessage = "رمز عبور شما با موفقیت تغییر یافت";
 
             return RedirectToPage();
         }

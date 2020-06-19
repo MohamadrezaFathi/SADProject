@@ -28,9 +28,9 @@ namespace DigitalShoppingTakkala.Areas.Identity.Pages.Account
 
         public class InputModel
         {
-            [Required]
-            [EmailAddress]
-            
+            [Required(ErrorMessage = "نوشتن فیلد ایمیل الزامی است")]
+            [EmailAddress(ErrorMessage = "آدرس ایمیل نامعتبر است")]
+
             public string Email { get; set; }
         }
 

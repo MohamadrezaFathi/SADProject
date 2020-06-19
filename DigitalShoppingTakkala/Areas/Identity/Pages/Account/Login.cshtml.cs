@@ -36,11 +36,11 @@ namespace DigitalShoppingTakkala.Areas.Identity.Pages.Account
 
         public class InputModel
         {
-            [Required]
-            [EmailAddress]
+            [Required(ErrorMessage = "نوشتن فیلد ایمیل الزامی است")]
+            [EmailAddress(ErrorMessage = "آدرس ایمیل یا نام کاربری نامعتبر است")]
             public string Email { get; set; }
 
-            [Required]
+            [Required(ErrorMessage = "نوشتن  فیلد رمزعبور الزامی است")]
             [DataType(DataType.Password)]
             public string Password { get; set; }
 

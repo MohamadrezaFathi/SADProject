@@ -39,17 +39,18 @@ namespace DigitalShoppingTakkala.Areas.Identity.Pages.Account
 
         public class InputModel
         {
-            [Required(ErrorMessage = "نوشتن این فیلد الزامی است")]
+            [Required(ErrorMessage = "نوشتن فیلد ایمیل الزامی است")]
             [EmailAddress(ErrorMessage ="آدرس ایمیل نامعتبر است")]
             [Display(Name = "Email")]
             public string Email { get; set; }
 
-            [Required(ErrorMessage ="نوشتن این فیلد الزامی است")]
-            [StringLength(100, ErrorMessage = "رمز عبور {0} باید شامل حداقل {2} و حداکثر {1} کاراکتر یاشد", MinimumLength = 6)]
+            [Required(ErrorMessage ="نوشتن فیلد رمزعبور الزامی است")]
+            [StringLength(100, ErrorMessage = "رمز عبور  باید شامل حداقل {2} و حداکثر {1} کاراکتر یاشد", MinimumLength = 6)]
             [DataType(DataType.Password)]
             [Display(Name = "Password")]
             public string Password { get; set; }
 
+            [Required(ErrorMessage = "نوشتن  فیلد تکرار رمزعبورالزامی است")]
             [DataType(DataType.Password)]
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "رمز عبور و تکرار آن با هم مطابقت ندارند")]

@@ -1,47 +1,50 @@
 ﻿@model IEnumerable<Product>
 @{
-    ViewData["Title"] = "فروشگاه تک کالا";
+    ViewData["Title"] = "محصولات";
 }
 <html>
 <head>
+
     <style>
-        
-        #panel1 a{
-            font-family:'B Yekan';
-            padding-top:-3px;
-            background-color:rgb(153, 235, 255);
+
+        #panel1 a {
+            font-family: 'B Yekan';
+            padding-top: -3px;
+            background-color: rgb(153, 235, 255);
         }
+        .filtering ul li{
+            display:inline-block;
+        }
+
         #pricechoice {
             margin: 10px 5px 10px 5px;
-            
             width: 100%;
             height: auto;
         }
-        input{
-           margin-bottom:8px;
-           margin-left:5px;
+
+        input {
+            margin-bottom: 8px;
+            margin-left: 5px;
         }
-        
     </style>
+
+    <script>
+        $(document).ready(function{
+              $("#accordion").accordion();
+        })
+       
+    </script>
 </head>
 <body>
 
     <div class="col-md-3 bg-light" dir="rtl" style="float:right; width:20%;">
         <div dir="rtl" style="text-align:right;">
-            <h5 class="text-dark" style="font-family:'B Yekan';text-align:center;margin-top:5px;">مرتب سازی بر اساس </h5>
-            <div style="width:100%;" id="panel1" class="bg-light">
-                <a class="btn btn-block active" href="@Url.Action("GetAllBySGID","Product",new { sorting="1"})">جدیدترین</a>
-                <a class="btn btn-block" href="@Url.Action("GetAllBySGID","Product",new { sorting="2"})">پرفروش ترین</a>
-                <a class="btn btn-block" href="@Url.Action("GetAllBySGID","Product",new { sorting="4"})">گران ترین</a>
-                <a style="margin-bottom:35px;" class="btn btn-block" href="@Url.Action("GetAllBySGID","Product",new { sorting="5"})">ارزان ترین</a>
-
-
-            </div>
+         
         </div>
-        <div id="pricechoice" dir="rtl" style="font-family:'B Yekan'"; >
-            <div class="dropdown show">
-                <a style="margin-left:20px;margin-right:-5px;" class="btn btn-secondary btn-block dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
-                   جست و جو براساس قیمت
+        <div id="pricechoice" dir="rtl" style="font-family:'B Yekan'" ;>
+            <div class=" dropdown show">
+                <a style="margin-left:20px;margin-right:-5px;" class="btn  btn-secondary btn-block dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    جست و جو براساس قیمت
                 </a>
 
                 <div class="dropdown-menu btn btn-block" aria-labelledby="dropdownMenuLink" dir="rtl" style="text-align:right;">
@@ -55,29 +58,41 @@
             </div>
         </div>
 
-
        
+
+
+
 
 
     </div>
 
     <div class="col-md-9 bg-light">
-        <div dir="rtl" style="width:100%;">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb bg-light">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item"><a href="#">Library</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Data</li>
-                </ol>
-            </nav>
-        </div>
+        <p  style="text-align:right;padding-top:18px;font-family:IRANYekan,sans-serif;">: مرتب سازی بر اساس </p>
+        <div class="filtering" >
 
+            <ul dir="rtl" style="text-align:right;padding-bottom:15px;margin-top:-40px;margin-right:105px;font-family:IRANYekan,sans-serif;">
+                <li>
+                    <a class="btn btn-sm  btn-outline-primary " href="@Url.Action("GetAllBySGID","Product",new { sorting="1"})">جدیدترین</a>
+                </li>
+                <li>
+                    <a class="btn btn-sm  btn-outline-primary" href="@Url.Action("GetAllBySGID","Product",new { sorting="2"})">پرفروش ترین</a>
+                </li>
+                <li>
+                    <a class="btn btn-sm  btn-outline-primary" href="@Url.Action("GetAllBySGID","Product",new { sorting="4"})">گران ترین</a>
+                </li>
+                <li>
+                    <a class="btn btn-sm   btn-outline-primary" href="@Url.Action("GetAllBySGID","Product",new { sorting="5"})">ارزان ترین</a>
+                </li>
+            </ul>
+
+
+        </div>
         <div class="row" style="padding-top:20px;" dir="rtl">
             @foreach (var item in Model)
             {
 
                 <div class="col-md-3" style="float:right;font-family:IRANYekan,sans-serif; padding-top:10px;">
-                    <div class="card mb-4 shadow-sm" dir="rtl" >
+                    <div class="card mb-4 shadow-sm" dir="rtl">
                         <a asp-controller="Product" asp-action="GetProductByid" asp-route-id="@item.ProductId">
                             <img src="~/Images/@item.ImageName" width="100%" height="225" style="padding:7px 7px 7px 7px;" />
                         </a>
