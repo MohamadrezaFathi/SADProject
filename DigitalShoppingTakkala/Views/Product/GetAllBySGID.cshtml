@@ -1,4 +1,6 @@
-﻿@model IEnumerable<Product>
+﻿@using PagedList.Core.Mvc;
+@using PagedList;
+@model IEnumerable<Product>
 @{
     ViewData["Title"] = "محصولات";
 }
@@ -32,14 +34,14 @@
         $(document).ready(function{
               $("#accordion").accordion();
         })
-       
+
     </script>
 </head>
 <body>
 
     <div class="col-md-3 bg-light" dir="rtl" style="float:right; width:20%;">
         <div dir="rtl" style="text-align:right;">
-         
+
         </div>
         <div id="pricechoice" dir="rtl" style="font-family:'B Yekan'" ;>
             <div class=" dropdown show">
@@ -58,7 +60,7 @@
             </div>
         </div>
 
-       
+
 
 
 
@@ -70,7 +72,7 @@
         <p  style="text-align:right;padding-top:18px;font-family:IRANYekan,sans-serif;">: مرتب سازی بر اساس </p>
         <div class="filtering" >
 
-            <ul dir="rtl" style="text-align:right;padding-bottom:15px;margin-top:-40px;margin-right:105px;font-family:IRANYekan,sans-serif;">
+            <ul dir="rtl" style="text-align:right;padding-bottom:15px;margin-top:-43px;margin-right:130px;font-family:IRANYekan,sans-serif;">
                 <li>
                     <a class="btn btn-sm  btn-outline-primary " href="@Url.Action("GetAllBySGID","Product",new { sorting="1"})">جدیدترین</a>
                 </li>
@@ -112,7 +114,7 @@
                 </div>
 
             }
-
+            <pager class="pager-container" list="@Model" options="@PagedListRenderOptions.TwitterBootstrapPager" asp-action="GetAllBySGID" asp-controller="Product" />
         </div>
 
     </div>

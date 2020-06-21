@@ -1,0 +1,9 @@
+﻿@model IEnumerable<Brand>
+
+
+<ul>
+    @foreach(var item in Model)
+    {
+        <li><a>@item.BrandName</a></li>
+    }
+</ul>

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using DigitalShoppingTakkala.Data;
 
 using Microsoft.AspNetCore.Mvc;
+using PagedList.Core;
 
 namespace DigitalShoppingTakkala.Controllers
 {
@@ -16,8 +17,9 @@ namespace DigitalShoppingTakkala.Controllers
         {
             _ctx = ctx;
         }
-        public IActionResult GetAllBySGID(int id, string sorting,string choiceprice)
+        public IActionResult GetAllBySGID(int id,int? brandshow,string sorting,string choiceprice)
         {
+            
             var products = _ctx.Products.Where(p => p.SubGroupId == id).ToList();
             products = products.OrderBy(x => x.Price2).ToList();
 
@@ -75,13 +77,18 @@ namespace DigitalShoppingTakkala.Controllers
             }
 
             
-            return View(products);
+            return View(products.ToList());
         }
 
         public IActionResult GetProductByid(int id)
         {
 
             return View(_ctx.Products.Find(id));
+        }
+
+        public IActionResult ShowBrands()
+        {
+            return View(_ctx.Brands);
         }
     }
 }
