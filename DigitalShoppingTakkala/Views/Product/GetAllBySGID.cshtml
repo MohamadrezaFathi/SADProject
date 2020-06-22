@@ -8,6 +8,7 @@
 <head>
 
     <style>
+        
 
         #panel1 a {
             font-family: 'B Yekan';
@@ -18,7 +19,7 @@
             display:inline-block;
         }
 
-        #pricechoice {
+        #choice {
             margin: 10px 5px 10px 5px;
             width: 100%;
             height: auto;
@@ -28,12 +29,40 @@
             margin-bottom: 8px;
             margin-left: 5px;
         }
+        h6{
+            font-family:IRANYekan,sans-serif;
+        }
+        #choice ul li a {
+            color: black;
+            text-decoration-style: none;
+            text-decoration: none;
+            text-decoration-line: none;
+            text-decoration-color: none;
+        }
+        #choice ul li a:hover {
+            color:purple;
+            
+            opacity:1;
+        }
+          #choice ul li:hover {
+            color:purple;
+            
+            opacity:1;
+        }
+
+        ul li a {
+            text-decoration-style: none;
+            text-decoration: none;
+            text-decoration-line: none;
+            text-decoration-color: none;
+            opacity: 0.8;
+            color: black;
+            text-decoration: none;
+        }
     </style>
 
     <script>
-        $(document).ready(function{
-              $("#accordion").accordion();
-        })
+       
 
     </script>
 </head>
@@ -43,28 +72,125 @@
         <div dir="rtl" style="text-align:right;">
 
         </div>
-        <div id="pricechoice" dir="rtl" style="font-family:'B Yekan'" ;>
-            <div class=" dropdown show">
-                <a style="margin-left:20px;margin-right:-5px;" class="btn  btn-secondary btn-block dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    جست و جو براساس قیمت
-                </a>
+        <div id="choice" dir="rtl" style="font-family:'B Yekan';height:auto;width:100%;">
+            <div>
+                <div>
+                    <h6 style="text-align:center;" class="btn btn-block btn-info">جست و جو براساس قیمت</h6>
+                </div>
 
-                <div class="dropdown-menu btn btn-block" aria-labelledby="dropdownMenuLink" dir="rtl" style="text-align:right;">
-                    <a class="dropdown-item" href="@Url.Action("GetAllBySGID","Product",new { choiceprice="1"})"><i class="fa fa-check-square-o" aria-hidden="true"></i>  کمتر از 1 میلیون تومان</a>
-                    <a class="dropdown-item" href="@Url.Action("GetAllBySGID","Product",new { choiceprice="2"})"><i class="fa fa-check-square-o" aria-hidden="true"></i>  بین 1 تا 5 میلیون تومان</a>
+                @*create price filtering*@
+                <div id="pricefilter" dir="rtl" style="text-align:right;">
+                    <ul>
+                        <li>
+                            <a href="@Url.Action("GetAllBySGID","Product",new { choiceprice="1"})">کمتر از 1 میلیون تومان</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("GetAllBySGID","Product",new { choiceprice="2"})">بین 1 تا 5 میلیون تومان</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("GetAllBySGID","Product",new { choiceprice="3"})">بین 5 تا 10 میلیون تومان</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("GetAllBySGID","Product",new { choiceprice="4"})">بین 10 تا 20 میلیون تومان</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("GetAllBySGID","Product",new { choiceprice="5"})">بیشتر از 20 میلیون تومان</a>
+                        </li>
+                    </ul>
 
-                    <a class="dropdown-item" href="@Url.Action("GetAllBySGID","Product",new { choiceprice="3"})"><i class="fa fa-check-square-o" aria-hidden="true"></i>  بین 5 تا 10 میلیون تومان</a>
-                    <a class="dropdown-item" href="@Url.Action("GetAllBySGID","Product",new { choiceprice="4"})"><i class="fa fa-check-square-o" aria-hidden="true"></i>  بین 10 تا 20 میلیون تومان</a>
-                    <a class="dropdown-item" href="@Url.Action("GetAllBySGID","Product",new { choiceprice="5"})"><i class="fa fa-check-square-o" aria-hidden="true"></i>  بیشتر از 20 میلیون تومان</a>
                 </div>
             </div>
         </div>
 
+        @*create brand filtering*@
 
 
 
+        <div id="choice" dir="rtl" style="font-family:'B Yekan';height:auto;width:100%;">
+            <div>
+                <div>
+                    <h6 style="text-align:center;" class="btn btn-block btn-info">جست و جو براساس برند</h6>
+                </div>
 
 
+                <div id="pricefilter" dir="rtl" style="text-align:right;">
+                    <ul>
+                        <li>
+                            <a href="@Url.Action("GetAllBySGID","Product",new { choicebrand=1})">اپل</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("GetAllBySGID","Product",new { choicebrand=2})">سامسونگ</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("GetAllBySGID","Product",new { choicebrand=3})">سونی</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("GetAllBySGID","Product",new { choicebrand=4})">هواوی</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("GetAllBySGID","Product",new { choicebrand=11})">ایسوس</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("GetAllBySGID","Product",new { choicebrand=15})">گوگل</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("GetAllBySGID","Product",new { choicebrand=6})">دل</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("GetAllBySGID","Product",new { choicebrand=5})">اچ پی</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("GetAllBySGID","Product",new { choicebrand=7})">شیایومی</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("GetAllBySGID","Product",new { choicebrand=12})">لنوو</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("GetAllBySGID","Product",new { choicebrand=9})">ال جی</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("GetAllBySGID","Product",new { choicebrand=18})">سایر برندها</a>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+
+        @*create introduction year filter*@
+        <div id="choice" dir="rtl" style="font-family:'B Yekan';height:auto;width:100%;">
+            <div>
+                <div>
+                    <h6 style="text-align:center;" class="btn btn-block btn-info">جست و جو براساس سال عرضه</h6>
+                </div>
+
+
+                <div id="pricefilter" dir="rtl" style="text-align:right;">
+                    <ul>
+                        <li>
+                            <a href="@Url.Action("GetAllBySGID","Product",new { choiceyear=2020})">2020</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("GetAllBySGID","Product",new { choiceyear=2019})">2019</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("GetAllBySGID","Product",new { choiceyear=2018})">2018</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("GetAllBySGID","Product",new { choiceyear=2017})">2017</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("GetAllBySGID","Product",new { choiceyear=2016})">2016</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("GetAllBySGID","Product",new { choiceyear=2015})">2015 و ماقبل آن </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+            </div>
+        </div>
 
     </div>
 

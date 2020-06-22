@@ -17,7 +17,7 @@ namespace DigitalShoppingTakkala.Controllers
         {
             _ctx = ctx;
         }
-        public IActionResult GetAllBySGID(int id,int? brandshow,string sorting,string choiceprice)
+        public IActionResult GetAllBySGID(int id,int? brandshow,string sorting,string choiceprice,int? choicebrand,int? choiceyear)
         {
             
             var products = _ctx.Products.Where(p => p.SubGroupId == id).ToList();
@@ -48,6 +48,25 @@ namespace DigitalShoppingTakkala.Controllers
                 }
             }
 
+            if (choicebrand != null && choicebrand!=18)
+            {
+                products = products.Where(x => x.BrandId == choicebrand).ToList();
+            }
+
+            if (choicebrand == 18)
+            {
+                products = products.Where(x => x.BrandId >=18).ToList();
+            }
+
+            if (choiceyear != null && choiceyear >2015)
+            {
+                products = products.Where(x => x.introduceyear == choiceyear).ToList();
+            }
+
+            if (choiceyear<=2015)
+            {
+                products = products.Where(x => x.introduceyear <= choiceyear).ToList();
+            }
 
             if (!string.IsNullOrEmpty(sorting))
             {
