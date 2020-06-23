@@ -15,7 +15,7 @@
         body{
             font-family:IRANYekan,sans-serif;
         }
-      img{
+      #images{
           width:650px;
           height:500px;
           text-align:center;
@@ -37,12 +37,12 @@
             font-family:IRANYekan,sans-serif;
             opacity:0.8;
         }
-        h4{
+        #anavin{
             font-family:IRANYekan,sans-serif;
             text-align:right;
             
         }
-        h5,h6{
+        h5{
             font-family:'B Yekan';
             text-align:right;
         }
@@ -72,13 +72,13 @@
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img  src="~/Images/@Model.ImageName" >
+                <img id="images" src="~/Images/@Model.ImageName" >
             </div>
             <div class="carousel-item">
-                <img  src="~/Images/@Model.ImageName" >
+                <img id="images" src="~/Images/@Model.ImageName" >
             </div>
             <div class="carousel-item ">
-                <img  src="~/Images/@Model.ImageName" >
+                <img id="images" src="~/Images/@Model.ImageName" >
             </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -94,7 +94,7 @@
     <div dir="rtl" id="feature">
         <div s>
             <div>
-                <h4 class="text-info" style="font-family:'B Yekan';padding-bottom:2%;">ویژگی های کالا</h4>
+                <h4 id="anavin" class="text-info" style="font-family:'B Yekan';padding-bottom:2%;">ویژگی های کالا</h4>
             </div>
             <div>
                 <p>ابعاد : @Model.size میلی متر</p>
@@ -113,18 +113,19 @@
                 <p>توضیحات کالا : @Model.TotalDescription </p>
             </div>
 
-            @if (Model.status == 0)
+            @if (Model.instock == 0)
             {
                 <div>
-                    <p>موجودی کالا: موحود نیست </p>
+                    <p>موجودی کالا: موجود نیست </p>
                 </div>
             }
-            else
+            else if(Model.instock==1)
             {
                 <div>
                     <p>موجودی کالا: موجود هست </p>
                 </div>
             }
+
 
             <div>
                 <p>رنگ های موجود : @Model.Colors</p>
@@ -133,21 +134,29 @@
             @if (Model.Price - Model.Price2 == 0)
             {
                 <div>
-                    <h6 style="text-align:center;">قیمت محصول : <big style="text-align:center;color:red;font-size:30px;">@Model.Price2.ToString("#,0")<small style="color:red;">تومان</small> </big></h6>
+                    <h6 id="anavin" style="text-align:center;">قیمت محصول : <big style="text-align:center;color:red;font-size:30px;">@Model.Price2.ToString("#,0")<small style="color:red;">تومان</small> </big></h6>
                 </div>
             }
             else if (Model.Price - Model.Price2 > 0)
             {
                 <div>
-                    <h6 style="text-align:center;"><del style="color:lightgray;"><big class="text-secondary" style="text-align:center;font-size:30px;opacity:1;">@Model.Price.ToString("#,0")</big></del></h6>
+                    <h6 id="anavin" style="text-align:center;"><del style="color:lightgray;"><big class="text-secondary" style="text-align:center;font-size:30px;opacity:1;">@Model.Price.ToString("#,0")</big></del></h6>
                 </div>
                 <div>
-                    <h6 style="text-align:center;">قیمت محصول با تخفیف ویژه : <big style="text-align:center;color:red;font-size:30px;">@Model.Price2.ToString("#,0")<small style="color:red;">تومان</small> </big></h6>
+                    <h6 id="anavin" style="text-align:center;">قیمت محصول با تخفیف ویژه : <big style="text-align:center;color:red;font-size:30px;">@Model.Price2.ToString("#,0")<small style="color:red;">تومان</small> </big></h6>
                 </div>
             }
-        <div  style="text-align:center;">
-            <a style="text-align:center;width:30%;height:13%;" asp-controller="Order" asp-action="AddtoCard" asp-route-id="@Model.ProductId" class="btn btn-sm btn-danger">افزودن به سبد خرید</a>
-        </div>
+            @if (Model.instock == 1)
+            {<div style="text-align:center;">
+                    <a style="text-align:center;width:30%;height:13%;" asp-controller="Order" asp-action="AddtoCard" asp-route-id="@Model.ProductId" class="btn btn-sm btn-danger">افزودن به سبد خرید</a>
+                </div>}
+            else if (Model.instock == 0)
+            {
+                <div style="text-align:center;">
+                    <a style="text-align:center;width:30%;height:13%;" class="btn btn-sm btn-warning">عدم موجودی کالا</a>
+                </div>
+            }
+
 
 
         </div>

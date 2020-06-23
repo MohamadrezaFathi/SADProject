@@ -22,6 +22,7 @@ namespace DigitalShoppingTakkala.Models
         public int introduceyear { get; set; }
         public int mass { get; set; }
         public string size { get; set; }
+        public int instock { get; set; }
         [Required]
         public string Colors { get; set; }
         [Required]
