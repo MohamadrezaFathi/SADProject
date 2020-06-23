@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using DigitalShoppingTakkala.Models;
 using DigitalShoppingTakkala.Data;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace DigitalShoppingTakkala.Controllers
 {

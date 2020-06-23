@@ -17,20 +17,24 @@
             display:inline;
             text-decoration:none;
             text-decoration-style:none;
+            color:black;
             padding:7px 15px 10px 10px;
             font-size:24px;
             opacity:0.5;
+        }
+        p a{
+            color:black;
+            opacity:0.7;
         }
         #brand_icons ul li a:hover{
             
             opacity:1;
             color:black;
         }
-        #brand_apps ul li a{
-            display:inline-block;
-            text-decoration:none;
-            text-decoration-style:none;
-            padding-top:5px;
+        #brand_apps ul li a {
+            display: inline-block;
+            text-decoration: none;
+            text-decoration-style: none;
             
         }
     </style>
@@ -61,29 +65,29 @@
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
     <header>
-        <div dir="rtl" class="container" >
-
-            <form style="width: 70%; padding-top: 15px;">
-                <div class="form-group">
-                    <input style="font-family: 'B Yekan';" class="form-control  text-dark bg-light " type="text" placeholder="جست و جو کنید..."
-                           aria-label="Search">
+        <div class="container"  dir="rtl" style="font-family:IRANYekan,sans-serif;">
+             <form action="/Search/search" method="post">
+                <div class="form-inline" style="padding-top:5px;">
+                    <div class="form-group">
+                       
+                        <input type="text" style="width:500px;"  class="form-control" id="searchitem" name="searchitem" placeholder="جست و جو در تک کالا..." >
+                    </div>
+                   
+                    <button type="submit" class="btn btn-success" style="margin-top:-2px;margin-right:5px;" >جست وجو</button>
                 </div>
-
-
-            </form>
-
-
+                 </form>
+            
 
         </div>
 
 
 
-        <nav class="navbar navbar-fixed-top navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-4" style="font-family:'B Yekan;"  data-spy="affix" data-offset-top="197" >
+        <nav class="navbar navbar-fixed-top navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-4" style="font-family:'B Yekan;" data-spy="affix" data-offset-top="197">
 
 
             <div class="container" dir="rtl" style="font-family:'B Yekan';">
 
-                <a class="navbar-brand  text-dark" style="margin-right:-10%;padding-bottom:1.3%;font-weight:bold;" asp-area="" asp-controller="Home" asp-action="Index"><h2>Takkala</h2></a>
+                <a class="navbar-brand  text-dark" style="margin-right:-10%;padding-bottom:1.3%;font-weight:bold;" asp-area="" asp-controller="Home" asp-action="Index"><h1>Takkala</h1></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -199,26 +203,27 @@
     </header>
     <div >
         <partial name="_CookieConsentPartial" />
-        <main role="main" class="pb-3" >
-           
-            
-            <div class="col-md-12">
+        <main role="main" class="pb-3">
+
+
+            <div class="col-md-12" style="margin-bottom:30%;">
                 @RenderBody()
             </div>
-            <div id="footer" style="width:100%;height:400px;opacity:0.9;background-color:lightgray;margin-top:30px;">
+        </main>
+            <div id="footer" style="width:100%;height:400px;opacity:0.9;background-color:lightgray;margin-top:20%;">
                 <div style="text-align:center;">
                     <h4 style="font-family:IRANYekan,sans-serif;padding-top:15px;">فروشگاه اینترنتی لوازم دیجیتال تک کالا</h4>
                     <h6 style="font-family:IRANYekan,sans-serif;">تجربه بهترین خرید را با ما داشته باشید</h6>
-                    <p class="container" style="border-bottom:1px solid black;"></p>
+                    <p class="container" style="border-bottom:1px solid black;padding-top:10px;"></p>
                 </div>
                 <div style="float:right;text-align:right;font-family:IRANYekan,sans-serif;opacity:0.9;margin-right:5%;" class="container text-dark">
                     <h5 style="font-family:IRANYekan,sans-serif;" class="container">راهنمای خرید از تک کالا</h5>
                     <br />
 
 
-                    <p class="container"><a>نحوه ثبت سفارش</a></p>
-                    <p class="container"><a>رویه های ارسال سفارش</a></p>
-                    <p class="container"><a>شیوه های پرداخت</a></p>
+                    <p class="container"><a a href="#">نحوه ثبت سفارش</a></p>
+                    <p class="container"><a a href="#">رویه های ارسال سفارش</a></p>
+                    <p class="container"><a a href="#">شیوه های پرداخت</a></p>
                 </div>
 
                 <div style="float:right;font-family:IRANYekan,sans-serif;opacity:0.9;margin-right:25%;margin-top:-178px;text-align:right;" class="container text-dark">
@@ -226,9 +231,9 @@
                     <br />
 
 
-                    <p><a>پاسخ به پرسش های متداول</a></p>
-                    <p><a>رویه های بازگرداندن کالا</a></p>
-                    <p><a>حریم خصوصی</a></p>
+                    <p><a a href="#">پاسخ به پرسش های متداول</a></p>
+                    <p><a a href="#">رویه های بازگرداندن کالا</a></p>
+                    <p><a a href="#">حریم خصوصی</a></p>
                 </div>
 
                 <div style="float:right;font-family:IRANYekan,sans-serif;opacity:0.9;margin-right:45%;margin-top:-178px;text-align:right;" class="container text-dark">
@@ -237,9 +242,9 @@
 
 
                     <p><a href="#">درباره تک کالا</a></p>
-                    <p><a>تماس با تک کالا</a></p>
-                    <p><a>انتقادات و پیشنهادات</a></p>
-                    <p><a>ارتباط مستقیم با مدیریت</a></p>
+                    <p><a a href="#">تماس با تک کالا</a></p>
+                    <p><a a href="#">انتقادات و پیشنهادات</a></p>
+                    <p><a a href="#">ارتباط مستقیم با مدیریت</a></p>
                 </div>
 
                 <div id="brand_icons" style="float:right;font-family:IRANYekan,sans-serif;opacity:0.9;margin-right:70%;margin-top:-165px;text-align:right;" class="container text-dark">
@@ -263,14 +268,14 @@
                     <h5 style="font-family:IRANYekan,sans-serif;"> :برنامه موبایل را میتوانید از طرق زیر دریافت کنید </h5>
                     <ul>
                         <li>
-                            <a href="https://www.sibapp.com"><img data-src="https://www.digikala.com/static/files/c4abfc14.png" alt="" width="100px" src="https://www.digikala.com/static/files/c4abfc14.png"></a>
+                            <a href="https://www.sibapp.com"><img src="~/Images/sibapp.png" alt="" width="100px" ></a>
 
                         </li>
                         <li>
-                            <a href="https://www.cafebazar.ir"><img data-src="https://www.digikala.com/static/files/1090a120.png" alt="" width="100px" src="https://www.digikala.com/static/files/1090a120.png"></a>
+                            <a href="https://www.cafebazar.ir"><img src="~/Images/cafebazzar.png"  alt="" width="100px" ></a>
                         </li>
                         <li>
-                            <a href="https://www.play.google.com"><img data-src="https://www.digikala.com/static/files/dd753f51.png" alt="playstore" width="100px" src="https://www.digikala.com/static/files/dd753f51.png"></a>
+                            <a href="https://www.play.google.com"><img src="~/Images/play.png" alt="playstore" width="100px" ></a>
                         </li>
                     </ul>
 
@@ -278,7 +283,7 @@
 
                 </div>
 
-</main>
+
     </div>
     <br/>
 
