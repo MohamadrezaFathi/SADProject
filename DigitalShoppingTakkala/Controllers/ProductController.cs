@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using DigitalShoppingTakkala.Data;
-
+using DigitalShoppingTakkala.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PagedList.Core;
 
@@ -102,12 +104,36 @@ namespace DigitalShoppingTakkala.Controllers
         public IActionResult GetProductByid(int id)
         {
 
+            ViewBag.commentha = _ctx.Comments.Where(x => x.ProductId == id).ToList();
+
             return View(_ctx.Products.Find(id));
         }
 
         public IActionResult ShowBrands()
         {
             return View(_ctx.Brands);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public IActionResult AddComment(string yourname,string comm,int scor,int mid)
+        {
+            string CurrentUserID = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            Comment comment = _ctx.Comments.SingleOrDefault(o => o.UserId == CurrentUserID);
+            comment = new Comment()
+            {
+                UserId = CurrentUserID,
+                UserName = yourname,
+                CommentText = comm,
+                Score = scor,
+                ProductId=mid
+
+
+            };
+            _ctx.Comments.Add(comment);
+            _ctx.SaveChanges();
+            return RedirectToAction("GetProductByid", new { id = mid });
         }
     }
 }
