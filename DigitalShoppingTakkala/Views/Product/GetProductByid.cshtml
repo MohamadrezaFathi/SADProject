@@ -12,22 +12,25 @@
 <html>
 <head>
     <style>
-        body{
-            font-family:IRANYekan,sans-serif;
+        body {
+            font-family: IRANYekan,sans-serif;
         }
-        ul li a{
-            display:inline-block;
+
+        ul li a {
+            display: inline-block;
         }
-        ul li{
-            display:inline-block;
+
+        ul li {
+            display: inline-block;
         }
-      #images{
-          width:650px;
-          height:500px;
-          text-align:center;
-          margin-left:20%;
-      }
-      
+
+        #images {
+            width: 650px;
+            height: 500px;
+            text-align: center;
+            margin-left: 20%;
+        }
+
         .carousel-control-prev-icon, .carousel-control-next-icon {
             outline: black;
             background-color: rgba(0, 0, 0, 0.3);
@@ -36,34 +39,38 @@
             border: 1px solid white;
         }
 
-        h2{
-            text-align:right;
-            margin-bottom:40px;
-            padding-bottom:10px;
-            font-family:IRANYekan,sans-serif;
-            opacity:0.9;
+        h2 {
+            text-align: right;
+            margin-bottom: 40px;
+            padding-bottom: 10px;
+            font-family: IRANYekan,sans-serif;
+            opacity: 0.9;
         }
-        #anavin{
-            font-family:IRANYekan,sans-serif;
-            text-align:right;
-            
-        }
-        h5{
-            font-family:'B Yekan';
-            text-align:right;
-        }
-        ul li h5{
-            text-decoration:none;
-        }
-        #feature{
-            opacity:0.9;
-            
 
+        #anavin {
+            font-family: IRANYekan,sans-serif;
+            text-align: right;
         }
-        p{
-            text-align:right;
+
+        h5 {
+            font-family: 'B Yekan';
+            text-align: right;
+        }
+
+        ul li h5 {
+            text-decoration: none;
+        }
+
+        #feature {
+            opacity: 0.9;
+        }
+
+        p {
+            text-align: right;
         }
     </style>
+   
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 </head>
 <body>
 
@@ -180,18 +187,20 @@
                             </div>
                             <div class="form-group">
 
-                                <input type="text" class="form-control" id="comm" name="comm" placeholder="نظر خود را بنویسید">
+                                <textarea class="form-control" id="comm" name="comm" placeholder="نظر خود را بنویسید"></textarea>
                             </div>
                             <div class="form-group">
 
-                                <input type="text" class="form-control" id="scor" name="scor" placeholder="امتیازی که به محصول میدهید">
+                             
+                               <input type="text" class="form-control" id="scor" name="scor" placeholder="امتیازی که به محصول میدهید بین 1 تا 5">
+                                     
                             </div>
                             
 
                                 <input type="hidden" class="form-control" value="@Model.ProductId" name="mid">
                             
 
-                            <button type="submit" class="btn btn-outline-primary" style="background-color:lightblue;">ثبت نظر</button>
+                            <button type="submit" class="btn btnprimary" style="background-color:rgb(32, 66, 222);">ثبت نظر</button>
                         </div>
                     </form>
                 </div>
@@ -200,11 +209,36 @@
         </div>
     </div>
    
-    <div>
+    <div style="border:1px solid white;margin-top:20px;height:auto;">
         @foreach (var item in (ViewBag.commentha as ICollection<DigitalShoppingTakkala.Models.Comment>))
         {
-            <h2>@item.UserName</h2>
-            <h2>@item.CommentText</h2>
+        <div class="container" style="padding-top:10px;font-family:IRANYekan,sans-serif;text-align:right;opacity:0.9;">
+            <p style="font-size:16px;color:purple;padding-bottom:7px;font-family:IRANYekan,sans-serif">@item.UserName</p>
+
+            <p style="font-family:IRANYekan;font-size:18px;">@item.CommentText</p>
+            @if (item.Score >= 4)
+            {
+                <ul>
+                    <li>  <a style="font-size:16px;font-family:IRANYekan;color:green;">خرید این محصول را توصیه میکنم</a> <i class='far fa-grin' aria-hidden="true" style="font-size:20px;color:green;"></i></li>
+                </ul>
+
+            }
+            else if (item.Score <= 3 || item.Score >= 2)
+            {
+                <ul>
+                    <li>  <a style="font-size:16px;font-family:IRANYekan;color:orange;">در مورد خرید این محصول نظری ندارم</a> <i class='far fa-meh' aria-hidden="true" style="font-size:20px;color:orange;"></i></li>
+                </ul>
+
+            }
+            else if (item.Score <= 1)
+            {
+                <ul>
+                    <li>  <a style="font-size:16px;font-family:IRANYekan;color:red;">خرید این محصول را توصیه نمیکنم</a> <i class='far fa-frown' aria-hidden="true" style="font-size:20px;color:red;"></i></li>
+                </ul>
+
+            }
+        </div>
+        <hr/>
         }
     </div>
 </div>
