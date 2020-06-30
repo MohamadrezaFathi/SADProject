@@ -4,14 +4,16 @@ using DigitalShoppingTakkala.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DigitalShoppingTakkala.Migrations
 {
     [DbContext(typeof(MyContext))]
-    partial class MyContextModelSnapshot : ModelSnapshot
+    [Migration("20200630212505_newcoloumnsadded")]
+    partial class newcoloumnsadded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -60,17 +62,35 @@ namespace DigitalShoppingTakkala.Migrations
                     b.ToTable("Comments");
                 });
 
-            modelBuilder.Entity("DigitalShoppingTakkala.Models.Delivery", b =>
+            modelBuilder.Entity("DigitalShoppingTakkala.Models.DeliverCustomers", b =>
                 {
-                    b.Property<int>("DeliveryCode")
+                    b.Property<int>("DeliverID")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Deliveryname");
+                    b.Property<string>("DeliverPhone")
+                        .IsRequired();
 
-                    b.HasKey("DeliveryCode");
+                    b.Property<string>("Deliveraddress")
+                        .IsRequired();
 
-                    b.ToTable("Deliveries");
+                    b.Property<string>("Delivergender");
+
+                    b.Property<string>("Deliverlastname")
+                        .IsRequired();
+
+                    b.Property<string>("Delivername")
+                        .IsRequired();
+
+                    b.Property<string>("Deliverprovince")
+                        .IsRequired();
+
+                    b.Property<string>("SiteUser")
+                        .IsRequired();
+
+                    b.HasKey("DeliverID");
+
+                    b.ToTable("DeliverCustomers");
                 });
 
             modelBuilder.Entity("DigitalShoppingTakkala.Models.Group", b =>

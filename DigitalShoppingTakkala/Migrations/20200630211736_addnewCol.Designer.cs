@@ -4,14 +4,16 @@ using DigitalShoppingTakkala.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DigitalShoppingTakkala.Migrations
 {
     [DbContext(typeof(MyContext))]
-    partial class MyContextModelSnapshot : ModelSnapshot
+    [Migration("20200630211736_addnewCol")]
+    partial class addnewCol
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -60,17 +62,35 @@ namespace DigitalShoppingTakkala.Migrations
                     b.ToTable("Comments");
                 });
 
-            modelBuilder.Entity("DigitalShoppingTakkala.Models.Delivery", b =>
+            modelBuilder.Entity("DigitalShoppingTakkala.Models.Customers", b =>
                 {
-                    b.Property<int>("DeliveryCode")
+                    b.Property<int>("CusId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Deliveryname");
+                    b.Property<string>("Phone")
+                        .IsRequired();
 
-                    b.HasKey("DeliveryCode");
+                    b.Property<string>("address")
+                        .IsRequired();
 
-                    b.ToTable("Deliveries");
+                    b.Property<string>("gender");
+
+                    b.Property<string>("lastname")
+                        .IsRequired();
+
+                    b.Property<string>("name")
+                        .IsRequired();
+
+                    b.Property<string>("province")
+                        .IsRequired();
+
+                    b.Property<string>("user")
+                        .IsRequired();
+
+                    b.HasKey("CusId");
+
+                    b.ToTable("Customers");
                 });
 
             modelBuilder.Entity("DigitalShoppingTakkala.Models.Group", b =>
@@ -96,6 +116,8 @@ namespace DigitalShoppingTakkala.Migrations
 
                     b.Property<DateTime>("CreateDate");
 
+                    b.Property<int>("CusId");
+
                     b.Property<bool>("IsFinally");
 
                     b.Property<double>("Sum");
@@ -104,6 +126,8 @@ namespace DigitalShoppingTakkala.Migrations
                         .IsRequired();
 
                     b.HasKey("OrderId");
+
+                    b.HasIndex("CusId");
 
                     b.ToTable("Orders");
                 });
@@ -202,6 +226,14 @@ namespace DigitalShoppingTakkala.Migrations
                     b.HasOne("DigitalShoppingTakkala.Models.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("DigitalShoppingTakkala.Models.Order", b =>
+                {
+                    b.HasOne("DigitalShoppingTakkala.Models.Customers", "Customer")
+                        .WithMany("Orders")
+                        .HasForeignKey("CusId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

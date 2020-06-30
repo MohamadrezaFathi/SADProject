@@ -107,14 +107,14 @@
                             {
                                 <div class="col-md-3" style="float:right;font-family:IRANYekan,sans-serif;" dir="rtl">
                                     <div class="card mb-4 shadow-sm">
-                                        <a href="#">
+                                        <a asp-controller="Product" asp-action="GetProductByid" asp-route-id="@item.ProductId">
                                             <img src="~/Images/@item.ImageName" width="100%" height="225" style="padding:7px 7px 7px 7px;" />
                                         </a>
                                         <div class="card-body">
 
                                             <p class="card-text" style="text-align:right;">@item.ProductName</p>
                                             <div class="d-flex justify-content-between align-items-center">
-                                               
+
                                                 <small class="text-dark" style="font-weight:bolder;font-family:'B Mitra';">@item.Price2.ToString("#,0") تومان</small>
 
                                                 <div class="btn-group">
@@ -151,7 +151,7 @@
                             {
                                 <div class="col-md-3" style="float:right;font-family:IRANYekan,sans-serif;" dir="rtl">
                                     <div class="card mb-4 shadow-sm">
-                                        <a href="#">
+                                        <a asp-controller="Product" asp-action="GetProductByid" asp-route-id="@item.ProductId">
                                             <img src="~/Images/@item.ImageName" width="100%" height="225" style="padding:7px 7px 7px 7px;" />
                                         </a>
                                         <div class="card-body">

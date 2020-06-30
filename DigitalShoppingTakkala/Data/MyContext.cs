@@ -21,5 +21,6 @@ namespace DigitalShoppingTakkala.Data
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
         public DbSet<Comment> Comments { get; set; }
+        //public DbSet<Delivery> Deliveries { get; set; }
     }
 }

@@ -11,13 +11,14 @@ namespace DigitalShoppingTakkala.Models
         [Key]
         public int OrderId { get; set; }
         [Required]
-        public string UserId { get; set; }
+        public string UserId{ get; set; }
         [Required]
         public DateTime CreateDate { get; set; }
         [Required]
         public double Sum { get; set; }
         [Required]
         public bool IsFinally { get; set; }
+        
 
         public List<OrderDetail> OrderDetails { get; set; }
 
