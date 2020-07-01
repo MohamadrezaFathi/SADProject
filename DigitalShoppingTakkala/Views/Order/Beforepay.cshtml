@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewData["Title"] = "ثبت اطلاعات ارسال";
+}
+<h3 style="text-align:center;font-family:IRANYekan,sans-serif;">ثبت اطلاعات ارسال کالا</h3>
+
+<form action="/Order/CreateFactor" method="post" style="text-align:right;font-family:IRANYekan,sans-serif;" dir="rtl">
+    <div style="padding-top:15px;margin-top:10px;">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label>نام</label>
+            <input type="text" class="form-control" id="name" name="name">
+           
+        </div>
+        <div class="form-group">
+            <label>نام خانوادگی</label>
+            <input class="form-control" id="family" name="family">
+        </div>
+
+        <div class="form-group">
+
+            <label>آدرس</label>
+            <input type="text" class="form-control" id="address" name="address">
+
+        </div>
+        <div class="form-group">
+
+            <label>تلفن همراه</label>
+            <input type="text" class="form-control" id="phone" name="phone">
+
+        </div>
+
+
+
+
+
+        <button type="submit" class="btn btn-outline-success" style="margin-right:45%;">ثبت اطلاعات</button>
+    </div>
+</form>
+
+

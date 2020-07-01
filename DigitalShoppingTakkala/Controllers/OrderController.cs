@@ -144,6 +144,10 @@ namespace DigitalShoppingTakkala.Controllers
             _ctx.SaveChanges();
             return RedirectToAction("ShowOrder");
         }
+        public IActionResult Beforepay()
+        {
+            return View();
+        }
 
        
         [Authorize]
@@ -182,7 +186,7 @@ namespace DigitalShoppingTakkala.Controllers
             var d = (int)order.Sum;
             var payment = new Payment(d);
             var res = payment.PaymentRequest($"پرداخت فاکتور شماره {order.OrderId}",
-                "https://localhost:44358/Home/OnlinePayment/" + order.OrderId,emailstream,phonestream);
+                "https://localhost:44354/Home/OnlinePayment/" + order.OrderId,emailstream,phonestream);
             if (res.Result.Status == 100)
             {
                 return Redirect("https://sandbox.zarinpal.com/pg/StartPay/" + res.Result.Authority);

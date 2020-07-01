@@ -12,13 +12,13 @@ namespace DigitalShoppingTakkala.Models
         public int CRid { get; set; }
         [Required]
         public string CRuser { get; set; }
-        [Required]
+        [Required(ErrorMessage ="وارد کردن نام الزامی است")]
         public string nameofcr { get; set; }
-        [Required]
+        [Required(ErrorMessage = "وارد کردن نام خانوادگی الزامی است")]
         public string lastnameofcr { get; set; }
-        [Required]
+        [Required(ErrorMessage = "وارد کردن آدرس الزامی است")]
         public string addressofcr { get; set; }
-        [Required]
+        [Required(ErrorMessage = "وارد کردن تلفن همراه الزامی است")]
         public string phoneofcr { get; set; }
     }
 }
