@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DigitalShoppingTakkala.Migrations
 {
     [DbContext(typeof(MyContext))]
-    [Migration("20200630213526_newrows2")]
-    partial class newrows2
+    [Migration("20200701095026_addrece1")]
+    partial class addrece1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -30,6 +30,8 @@ namespace DigitalShoppingTakkala.Migrations
                     b.Property<string>("BrandName")
                         .IsRequired()
                         .HasMaxLength(200);
+
+                    b.Property<string>("History");
 
                     b.HasKey("BrandId");
 
@@ -165,6 +167,32 @@ namespace DigitalShoppingTakkala.Migrations
                     b.HasIndex("SubGroupId");
 
                     b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("DigitalShoppingTakkala.Models.Receiver", b =>
+                {
+                    b.Property<int>("ReceiverId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Address")
+                        .IsRequired();
+
+                    b.Property<string>("ReceiverUserId")
+                        .IsRequired();
+
+                    b.Property<string>("lastname")
+                        .IsRequired();
+
+                    b.Property<string>("name")
+                        .IsRequired();
+
+                    b.Property<string>("phone")
+                        .IsRequired();
+
+                    b.HasKey("ReceiverId");
+
+                    b.ToTable("Receivers");
                 });
 
             modelBuilder.Entity("DigitalShoppingTakkala.Models.SubGroup", b =>

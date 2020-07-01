@@ -2,7 +2,7 @@
 
 namespace DigitalShoppingTakkala.Migrations
 {
-    public partial class newcoloumnsadded2 : Migration
+    public partial class newColclientdeliver1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

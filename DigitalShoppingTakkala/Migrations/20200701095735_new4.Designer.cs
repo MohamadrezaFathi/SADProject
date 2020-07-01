@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DigitalShoppingTakkala.Migrations
 {
     [DbContext(typeof(MyContext))]
-    [Migration("20200630212505_newcoloumnsadded")]
-    partial class newcoloumnsadded
+    [Migration("20200701095735_new4")]
+    partial class new4
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -30,6 +30,8 @@ namespace DigitalShoppingTakkala.Migrations
                     b.Property<string>("BrandName")
                         .IsRequired()
                         .HasMaxLength(200);
+
+                    b.Property<string>("History");
 
                     b.HasKey("BrandId");
 
@@ -60,37 +62,6 @@ namespace DigitalShoppingTakkala.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("Comments");
-                });
-
-            modelBuilder.Entity("DigitalShoppingTakkala.Models.DeliverCustomers", b =>
-                {
-                    b.Property<int>("DeliverID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("DeliverPhone")
-                        .IsRequired();
-
-                    b.Property<string>("Deliveraddress")
-                        .IsRequired();
-
-                    b.Property<string>("Delivergender");
-
-                    b.Property<string>("Deliverlastname")
-                        .IsRequired();
-
-                    b.Property<string>("Delivername")
-                        .IsRequired();
-
-                    b.Property<string>("Deliverprovince")
-                        .IsRequired();
-
-                    b.Property<string>("SiteUser")
-                        .IsRequired();
-
-                    b.HasKey("DeliverID");
-
-                    b.ToTable("DeliverCustomers");
                 });
 
             modelBuilder.Entity("DigitalShoppingTakkala.Models.Group", b =>

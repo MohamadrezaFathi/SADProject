@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DigitalShoppingTakkala.Migrations
 {
     [DbContext(typeof(MyContext))]
-    [Migration("20200630213509_newrows")]
-    partial class newrows
+    [Migration("20200701100507_addnew4cr")]
+    partial class addnew4cr
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -31,9 +31,37 @@ namespace DigitalShoppingTakkala.Migrations
                         .IsRequired()
                         .HasMaxLength(200);
 
+                    b.Property<string>("History");
+
                     b.HasKey("BrandId");
 
                     b.ToTable("Brands");
+                });
+
+            modelBuilder.Entity("DigitalShoppingTakkala.Models.ClientReceiver", b =>
+                {
+                    b.Property<int>("CRid")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CRuser")
+                        .IsRequired();
+
+                    b.Property<string>("addressofcr")
+                        .IsRequired();
+
+                    b.Property<string>("lastnameofcr")
+                        .IsRequired();
+
+                    b.Property<string>("nameofcr")
+                        .IsRequired();
+
+                    b.Property<string>("phoneofcr")
+                        .IsRequired();
+
+                    b.HasKey("CRid");
+
+                    b.ToTable("ClientReceivers");
                 });
 
             modelBuilder.Entity("DigitalShoppingTakkala.Models.Comment", b =>

@@ -13,6 +13,7 @@ namespace DigitalShoppingTakkala.Models
         [Required]
         [MaxLength(200)]
         public string BrandName { get; set; }
+        public string History { get; set; }
 
 
         public List<Product> Products { get; set; }

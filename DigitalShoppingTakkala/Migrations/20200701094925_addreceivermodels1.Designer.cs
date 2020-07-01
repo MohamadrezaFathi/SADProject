@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DigitalShoppingTakkala.Migrations
 {
     [DbContext(typeof(MyContext))]
-    [Migration("20200630214748_newrows3")]
-    partial class newrows3
+    [Migration("20200701094925_addreceivermodels1")]
+    partial class addreceivermodels1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -30,6 +30,8 @@ namespace DigitalShoppingTakkala.Migrations
                     b.Property<string>("BrandName")
                         .IsRequired()
                         .HasMaxLength(200);
+
+                    b.Property<string>("History");
 
                     b.HasKey("BrandId");
 
@@ -60,19 +62,6 @@ namespace DigitalShoppingTakkala.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("Comments");
-                });
-
-            modelBuilder.Entity("DigitalShoppingTakkala.Models.Delivery", b =>
-                {
-                    b.Property<int>("DeliveryCode")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Deliveryname");
-
-                    b.HasKey("DeliveryCode");
-
-                    b.ToTable("Deliveries");
                 });
 
             modelBuilder.Entity("DigitalShoppingTakkala.Models.Group", b =>
@@ -178,6 +167,32 @@ namespace DigitalShoppingTakkala.Migrations
                     b.HasIndex("SubGroupId");
 
                     b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("DigitalShoppingTakkala.Models.Receiver", b =>
+                {
+                    b.Property<int>("ReceiverId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Address")
+                        .IsRequired();
+
+                    b.Property<string>("ReceiverUserId")
+                        .IsRequired();
+
+                    b.Property<string>("lastname")
+                        .IsRequired();
+
+                    b.Property<string>("name")
+                        .IsRequired();
+
+                    b.Property<string>("phone")
+                        .IsRequired();
+
+                    b.HasKey("ReceiverId");
+
+                    b.ToTable("Receivers");
                 });
 
             modelBuilder.Entity("DigitalShoppingTakkala.Models.SubGroup", b =>

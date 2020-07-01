@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewData["Title"] = "Beforepayment";
+}
+
+<div>
+    <p class="text-dark" style="text-align:right;font-family:IRANYekan,sans-serif;opacity:1;font-size:20px;padding-bottom:7px;">اگر میخواهید نظر خود را درباره محصول ثبت کنید لازم است ابتدا در سایت ثبت نام کرده و وارد سایت شده باشید , در غیر این صورت میتوانید از طریق <a class="btn-link" style="text-decoration:none;" asp-area="Identity" asp-page="/Account/Login">این لینک </a> وارد حساب کاربری خود شوید.</p>
+
+    <form action="/Order/CreateFactor" method="post" style="text-align:center;">
+        <div style="padding-top:5px;">
+            <div class="form-group">
+
+                <input type="text" class="form-control" id="name" name="name" placeholder="نام خود را وارد کنید">
+            </div>
+            <div class="form-group">
+
+                <input class="form-control" id="family" name="family" placeholder="family">
+            </div>
+            <div class="form-group">
+
+
+                <input type="text" class="form-control" id="province" name="province" placeholder="pr">
+            </div>
+            <div class="form-group">
+
+
+                <input type="text" class="form-control" id="address" name="address" placeholder="addresss">
+
+            </div>
+            <div class="form-group">
+
+
+                <input type="text" class="form-control" id="phone" name="phone" placeholder="phoneds">
+
+            </div>
+
+
+            <input type="hidden" class="form-control" value="@Model.ProductId" name="mid">
+
+
+            <button type="submit" class="btn btnprimary" style="background-color:rgb(32, 66, 222);">ثبت مشخصات</button>
+        </div>
+    </form>
+</div>
+
+
+
+

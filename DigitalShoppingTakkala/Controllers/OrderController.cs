@@ -8,6 +8,7 @@ using DigitalShoppingTakkala.Models;
 using DigitalShoppingTakkala.Models.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using ZarinpalSandbox;
 
 namespace DigitalShoppingTakkala.Controllers
 {
@@ -15,9 +16,11 @@ namespace DigitalShoppingTakkala.Controllers
     public class OrderController : Controller
     {
         private MyContext _ctx;
-        public OrderController(MyContext ctx)
+        private ApplicationDbContext _Userctx;
+        public OrderController(MyContext ctx, ApplicationDbContext Userctx)
         {
             _ctx = ctx;
+            _Userctx = Userctx;
         }
 
 
@@ -142,6 +145,56 @@ namespace DigitalShoppingTakkala.Controllers
             return RedirectToAction("ShowOrder");
         }
 
+       
+        [Authorize]
+        [HttpPost]
+        public IActionResult CreateFactor(string name, string family, string phone, string address)
+        {
+            string CurrentUserID = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            ClientReceiver cr = _ctx.ClientReceivers.SingleOrDefault(o => o.CRuser == CurrentUserID);
+            cr = new ClientReceiver()
+            {
+                CRuser=CurrentUserID,
+                nameofcr = name,
+                lastnameofcr = family,
+                addressofcr = address,
+                phoneofcr = phone,
+                
+            };
+
+            _ctx.ClientReceivers.Add(cr);
+            _ctx.SaveChanges();
+            return RedirectToAction("Payment");
+        }
+        [Authorize]
+        public IActionResult Payment()
+        {
+            string CurrentUserID = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var order = _ctx.Orders.SingleOrDefault(o => o.UserId == CurrentUserID && !o.IsFinally);
+            if (order == null)
+            {
+                return NotFound();
+            }
+            
+
+            var emailstream = _Userctx.Users.SingleOrDefault(x=>x.Id==CurrentUserID).Email;
+            var phonestream = _Userctx.Users.SingleOrDefault(x => x.Id == CurrentUserID).PhoneNumber;
+            var d = (int)order.Sum;
+            var payment = new Payment(d);
+            var res = payment.PaymentRequest($"پرداخت فاکتور شماره {order.OrderId}",
+                "https://localhost:44358/Home/OnlinePayment/" + order.OrderId,emailstream,phonestream);
+            if (res.Result.Status == 100)
+            {
+                return Redirect("https://sandbox.zarinpal.com/pg/StartPay/" + res.Result.Authority);
+            }
+            else
+            {
+                return BadRequest();
+            }
+
+            return null;
+        }
+    
 
     }
 }

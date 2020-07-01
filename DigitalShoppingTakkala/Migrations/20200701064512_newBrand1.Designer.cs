@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DigitalShoppingTakkala.Migrations
 {
     [DbContext(typeof(MyContext))]
-    [Migration("20200630212551_newcoloumnsadded2")]
-    partial class newcoloumnsadded2
+    [Migration("20200701064512_newBrand1")]
+    partial class newBrand1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -31,9 +31,40 @@ namespace DigitalShoppingTakkala.Migrations
                         .IsRequired()
                         .HasMaxLength(200);
 
+                    b.Property<string>("History");
+
                     b.HasKey("BrandId");
 
                     b.ToTable("Brands");
+                });
+
+            modelBuilder.Entity("DigitalShoppingTakkala.Models.ClientDelivers", b =>
+                {
+                    b.Property<int>("ClientdeliverId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Clientdeliverusername")
+                        .IsRequired();
+
+                    b.Property<string>("deliveraddress")
+                        .IsRequired();
+
+                    b.Property<string>("deliverfirstname")
+                        .IsRequired();
+
+                    b.Property<string>("deliverlastname")
+                        .IsRequired();
+
+                    b.Property<string>("deliverphone")
+                        .IsRequired();
+
+                    b.Property<string>("deliverprovince")
+                        .IsRequired();
+
+                    b.HasKey("ClientdeliverId");
+
+                    b.ToTable("ClientDelivers");
                 });
 
             modelBuilder.Entity("DigitalShoppingTakkala.Models.Comment", b =>
@@ -60,37 +91,6 @@ namespace DigitalShoppingTakkala.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("Comments");
-                });
-
-            modelBuilder.Entity("DigitalShoppingTakkala.Models.DeliverCustomers", b =>
-                {
-                    b.Property<int>("DeliverID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("DeliverPhone")
-                        .IsRequired();
-
-                    b.Property<string>("Deliveraddress")
-                        .IsRequired();
-
-                    b.Property<string>("Delivergender");
-
-                    b.Property<string>("Deliverlastname")
-                        .IsRequired();
-
-                    b.Property<string>("Delivername")
-                        .IsRequired();
-
-                    b.Property<string>("Deliverprovince")
-                        .IsRequired();
-
-                    b.Property<string>("SiteUser")
-                        .IsRequired();
-
-                    b.HasKey("DeliverID");
-
-                    b.ToTable("DeliverCustomers");
                 });
 
             modelBuilder.Entity("DigitalShoppingTakkala.Models.Group", b =>

@@ -3,28 +3,29 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DigitalShoppingTakkala.Migrations
 {
-    public partial class newrows3 : Migration
+    public partial class new5cr : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Deliveries",
+                name: "ClientReceivers",
                 columns: table => new
                 {
-                    DeliveryCode = table.Column<int>(nullable: false)
+                    CRid = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Deliveryname = table.Column<string>(nullable: true)
+                    CRuser = table.Column<string>(nullable: false),
+                    nameofcr = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Deliveries", x => x.DeliveryCode);
+                    table.PrimaryKey("PK_ClientReceivers", x => x.CRid);
                 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Deliveries");
+                name: "ClientReceivers");
         }
     }
 }

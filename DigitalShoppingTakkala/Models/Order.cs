@@ -18,7 +18,8 @@ namespace DigitalShoppingTakkala.Models
         public double Sum { get; set; }
         [Required]
         public bool IsFinally { get; set; }
-        
+       
+
 
         public List<OrderDetail> OrderDetails { get; set; }
 
