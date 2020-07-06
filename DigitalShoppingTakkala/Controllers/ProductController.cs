@@ -105,6 +105,7 @@ namespace DigitalShoppingTakkala.Controllers
         {
 
             ViewBag.commentha = _ctx.Comments.Where(x => x.ProductId == id).ToList();
+            ViewBag.SimilarProducts = _ctx.Products.ToList();
 
             return View(_ctx.Products.Find(id));
         }

@@ -3,6 +3,9 @@
 
 @{ 
     string a = @Model.ProductName;
+    double b = Model.Price2;
+    int c = Model.SubGroupId;
+    int i = 0;
 }
 
     @{
@@ -78,6 +81,7 @@
 </html>
 
 <div class="container">
+   
     <div dir="rtl">
         <h2>@Model.ProductName</h2>
 
@@ -173,12 +177,55 @@
                 </div>
             }
 
+
+
+            @*show similar product*@
+            <div style="width:100%;margin-top:10px;" class="bg-light">
+                <h4 style="margin-top:10px;padding-top:15px;padding-right:2%;text-align:right;font-family:IRANYekan,sans-serif;padding-bottom:30px;">محصولات مشابه</h4>
+                <div class="container" dir="rtl">
+                    <div class="row">
+                        @foreach (var item in (ViewBag.SimilarProducts as ICollection<DigitalShoppingTakkala.Models.Product>))
+                        {
+                            if (item.SubGroupId == c && (item.Price2 < (b + 0.25 * b) && item.Price2 > (b - 0.25 * b)) && i<=4)
+                            {
+                                
+                                <div class="col-md-3" style="float:right;font-family:IRANYekan,sans-serif;" dir="rtl">
+                                    <div class="card mb-4 shadow-sm">
+                                        <a asp-controller="Product" asp-action="GetProductByid" asp-route-id="@item.ProductId">
+                                            <img src="~/Images/@item.ImageName" width="100%" height="200px" style="padding:7px 7px 7px 7px;" />
+                                        </a>
+                                        <div class="card-body">
+
+                                            <p class="card-text" style="text-align:right;">@item.ProductName</p>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <small class="text-dark" style="font-weight:bolder;font-family:'B Mitra';">@item.Price2.ToString("#,0") تومان</small>
+
+                                                <div class="btn-group">
+                                                    <a asp-controller="Order" asp-action="AddtoCard" asp-route-id="@item.ProductId" class="btn btn-sm btn-outline-danger">+ به سبد خرید</a>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            }
+                            i++;
+                            
+                        }
+
+                    </div>
+
+                </div>
+            </div>
+
+            @*add comment for site's users*@
             <h4 style="border-bottom:2px solid purple;text-align:center;opacity:0.8;font-family:IRANYekan,sans-serif;padding-top:25px;padding-bottom:15px;">نظرات کاربران</h4>
 
             <div class="container Comment" dir="rtl">
                 <div>
-                    <p class="text-dark" style="text-align:right;font-family:IRANYekan,sans-serif;opacity:1;font-size:20px;padding-bottom:7px;">اگر میخواهید نظر خود را درباره محصول ثبت کنید لازم است ابتدا در سایت ثبت نام کرده و وارد سایت شده باشید , در غیر این صورت میتوانید از طریق <a class="btn-link" style="text-decoration:none;"asp-area="Identity" asp-page="/Account/Login">این لینک </a> وارد حساب کاربری خود شوید.</p>
-                        
+                    <p class="text-dark" style="text-align:right;font-family:IRANYekan,sans-serif;opacity:1;font-size:20px;padding-bottom:7px;">اگر میخواهید نظر خود را درباره محصول ثبت کنید لازم است ابتدا در سایت ثبت نام کرده و وارد سایت شده باشید , در غیر این صورت میتوانید از طریق <a class="btn-link" style="text-decoration:none;" asp-area="Identity" asp-page="/Account/Login">این لینک </a> وارد حساب کاربری خود شوید.</p>
+
                     <form action="/Product/AddComment" method="post" style="text-align:center;">
                         <div style="padding-top:5px;">
                             <div class="form-group">
@@ -191,14 +238,14 @@
                             </div>
                             <div class="form-group">
 
-                             
-                               <input type="text" class="form-control" id="scor" name="scor" placeholder="امتیازی که به محصول میدهید بین 1 تا 5">
-                                     
-                            </div>
-                            
 
-                                <input type="hidden" class="form-control" value="@Model.ProductId" name="mid">
-                            
+                                <input type="text" class="form-control" id="scor" name="scor" placeholder="امتیازی که به محصول میدهید بین 1 تا 5">
+
+                            </div>
+
+
+                            <input type="hidden" class="form-control" value="@Model.ProductId" name="mid">
+
 
                             <button type="submit" class="btn btnprimary" style="background-color:rgb(32, 66, 222);">ثبت نظر</button>
                         </div>
@@ -208,37 +255,40 @@
 
         </div>
     </div>
-   
+
+
+
+    @*Show Comments*@
     <div style="border:1px solid white;margin-top:20px;height:auto;">
         @foreach (var item in (ViewBag.commentha as ICollection<DigitalShoppingTakkala.Models.Comment>))
         {
-        <div class="container" style="padding-top:10px;font-family:IRANYekan,sans-serif;text-align:right;opacity:0.9;">
-            <p style="font-size:16px;color:purple;padding-bottom:7px;font-family:IRANYekan,sans-serif">@item.UserName</p>
+            <div class="container" style="padding-top:10px;font-family:IRANYekan,sans-serif;text-align:right;opacity:0.9;">
+                <p style="font-size:16px;color:purple;padding-bottom:7px;font-family:IRANYekan,sans-serif">@item.UserName</p>
 
-            <p style="font-family:IRANYekan;font-size:18px;">@item.CommentText</p>
-            @if (item.Score >= 4)
-            {
-                <ul>
-                    <li>  <a style="font-size:16px;font-family:IRANYekan;color:green;">خرید این محصول را توصیه میکنم</a> <i class='far fa-grin' aria-hidden="true" style="font-size:20px;color:green;"></i></li>
-                </ul>
+                <p style="font-family:IRANYekan;font-size:18px;">@item.CommentText</p>
+                @if (item.Score >= 4)
+                {
+                    <ul>
+                        <li>  <a style="font-size:16px;font-family:IRANYekan;color:green;">خرید این محصول را توصیه میکنم</a> <i class='far fa-grin' aria-hidden="true" style="font-size:20px;color:green;"></i></li>
+                    </ul>
 
-            }
-            else if (item.Score <= 3 && item.Score >= 2)
-            {
-                <ul>
-                    <li>  <a style="font-size:16px;font-family:IRANYekan;color:orange;">در مورد خرید این محصول نظری ندارم</a> <i class='far fa-meh' aria-hidden="true" style="font-size:20px;color:orange;"></i></li>
-                </ul>
+                }
+                else if (item.Score <= 3 && item.Score >= 2)
+                {
+                    <ul>
+                        <li>  <a style="font-size:16px;font-family:IRANYekan;color:orange;">در مورد خرید این محصول نظری ندارم</a> <i class='far fa-meh' aria-hidden="true" style="font-size:20px;color:orange;"></i></li>
+                    </ul>
 
-            }
-            else if (item.Score <= 1)
-            {
-                <ul>
-                    <li>  <a style="font-size:16px;font-family:IRANYekan;color:red;">خرید این محصول را توصیه نمیکنم</a> <i class='far fa-frown' aria-hidden="true" style="font-size:20px;color:red;"></i></li>
-                </ul>
+                }
+                else if (item.Score <= 1)
+                {
+                    <ul>
+                        <li>  <a style="font-size:16px;font-family:IRANYekan;color:red;">خرید این محصول را توصیه نمیکنم</a> <i class='far fa-frown' aria-hidden="true" style="font-size:20px;color:red;"></i></li>
+                    </ul>
 
-            }
-        </div>
-        <hr/>
+                }
+            </div>
+            <hr />
         }
     </div>
 </div>
