@@ -91,21 +91,9 @@
             <div class="carousel-item active">
                 <img id="images" src="~/Images/@Model.ImageName">
             </div>
-            <div class="carousel-item">
-                <img id="images" src="~/Images/@Model.ImageName">
-            </div>
-            <div class="carousel-item ">
-                <img id="images" src="~/Images/@Model.ImageName">
-            </div>
+            
         </div>
-        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true" style="text-align: left; float: left; margin-right: 50%; "></span>
-            <span class="sr-only">Next</span>
-        </a>
+       
     </div>
 
     <div dir="rtl" id="feature">
@@ -186,7 +174,7 @@
                     <div class="row">
                         @foreach (var item in (ViewBag.SimilarProducts as ICollection<DigitalShoppingTakkala.Models.Product>))
                         {
-                            if (item.SubGroupId == c && (item.Price2 < (b + 0.25 * b) && item.Price2 > (b - 0.25 * b)) && i<=4)
+                            if (item.SubGroupId == c && (item.Price2 < (b +( 0.4 * b)) && item.Price2 > (b - (0.4 * b))) && i<=4)
                             {
                                 
                                 <div class="col-md-3" style="float:right;font-family:IRANYekan,sans-serif;" dir="rtl">
@@ -247,7 +235,7 @@
                             <input type="hidden" class="form-control" value="@Model.ProductId" name="mid">
 
 
-                            <button type="submit" class="btn btnprimary" style="background-color:rgb(32, 66, 222);">ثبت نظر</button>
+                            <button type="submit" class="btn btnprimary" style="background-color:rgb(32, 222, 210);">ثبت نظر</button>
                         </div>
                     </form>
                 </div>

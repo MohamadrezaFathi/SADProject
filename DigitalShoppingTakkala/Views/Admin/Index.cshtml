@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Product>
+
+@{
+    ViewData["Title"] = "صفحه ادمبن";
+}
+
+<html>
+<head>
+    <style>
+       
+    </style>
+</head>
+<body>
+    <h2  style="text-align:center;font-family:IRANYekan,sans-serif;padding:10px;">مدیریت محصولات سایت تک کالا</h2>
+    <div class="container" dir="rtl" style="text-align:center;font-family:IRANYekan,sans-serif;padding:20px;margin-bottom:10px;">
+        <a class="btn btn-outline-success" asp-action="CreateProduct" asp-controller="Admin" style="margin-left:20px;">افزودن محصول جدید</a>
+            <a class="btn btn-outline-danger" asp-action="CreateBrand" asp-controller="Admin">افزودن برند جدید</a>
+       
+    </div>
+    <div>
+        <table class="container table table-bordered" dir="rtl" style="text-align:center;">
+            <tr>
+                <th>کد محصول</th>
+                <th>نام محصول</th>
+                <th>وضعیت موجودی</th>
+                <th>قیمت</th>
+                
+                <th>مدیریت محصول</th>
+
+            </tr>
+
+            @foreach (var item in Model)
+            {
+        <tr>
+            <td>@item.ProductId</td>
+            <td>@item.ProductName</td>
+            
+            <td>@item.instock</td>
+           
+           
+            <td>@item.Price2.ToString("#,0") تومان</td>
+
+            <td style="font-family:'B Yekan';">
+                <a class="btn btn-danger" asp-action="Delete" asp-controller="Admin" asp-route-id="@item.ProductId">حذف محصول</a>
+                <a class="btn btn-warning" asp-action="Edit" asp-controller="Admin" asp-route-id="@item.ProductId">ویرایش محصول</a>
+
+
+            </td>
+
+
+        </tr>
+               
+
+            }
+            
+        </table>
+
+    </div>
+
+</body>
+</html>
+
+

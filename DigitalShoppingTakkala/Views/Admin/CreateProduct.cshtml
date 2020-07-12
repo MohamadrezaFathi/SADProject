@@ -1,0 +1,100 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "افزودن محصول جدید";
+}
+
+<h1 style="text-align:center;font-family:IRANYekan,sans-serif;">محصول موردنظر خود را اضافه کنید</h1>
+
+<div class="container" dir="rtl">
+    <form asp-action="CreateProduct" method="post" enctype="multipart/form-data" style="text-align:right;font-family:IRANYekan,sans-serif;" dir="rtl">
+        <div style="padding-top:15px;margin-top:10px;">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="ProductName">نام محصول</label>
+                <input class="form-control" asp-for="ProductName" />
+            </div>
+
+            <div class="form-group">
+
+                <label asp-for="TotalDescription">توضیحات کلی محصول</label>
+                <input class="form-control" asp-for="TotalDescription" />
+
+            </div>
+            <div class="form-group">
+
+                <label asp-for="Price">قیمت اصلی</label>
+                <input  class="form-control" asp-for="Price" />
+
+            </div>
+            <div class="form-group">
+
+                <label asp-for="Price2">قیمت نهایی</label>
+                <input  class="form-control" asp-for="Price2" />
+
+            </div>
+            <div class="form-group">
+
+                <label asp-for="introduceyear">سال معرفی</label>
+                <input  class="form-control" asp-for="introduceyear" />
+
+            </div>
+            <div class="form-group">
+
+                <label asp-for="mass">وزن</label>
+                <input  class="form-control" asp-for="mass" />
+
+            </div>
+            <div class="form-group">
+
+                <label asp-for="size">ابعاد</label>
+                <input  class="form-control" asp-for="size" />
+
+            </div>
+            <div class="form-group">
+
+                <label asp-for="instock">موجودی</label>
+                <input class="form-control" asp-for="instock" />
+
+            </div>
+            <div class="form-group">
+
+                <label asp-for="Colors">رنگ ها</label>
+                <input  class="form-control" asp-for="Colors" />
+
+            </div>
+            <div class="form-group">
+
+                <label asp-for="SubGroupId">شماره زیرگروه دسته بندی</label>
+                <input  class="form-control" asp-for="SubGroupId" />
+
+            </div>
+            <div class="form-group">
+
+                <label asp-for="status">وضعیت</label>
+                <input  class="form-control" asp-for="status" />
+
+            </div>
+            <div class="form-group">
+
+                <label asp-for="BrandId">شماره گروه برند</label>
+                <input  class="form-control" asp-for="BrandId" />
+
+            </div>
+            <div class="form-group">
+
+                <label asp-for="UploadImage">آپلود عکس</label>
+                <br/>
+                <input  asp-for="UploadImage" accept="image/*" />
+
+            </div>
+
+
+
+
+            <button type="submit" class="btn btn-outline-success" style="margin-right:45%;">ثبت اطلاعات</button>
+        </div>
+    </form>
+
+</div>
+
