@@ -1,0 +1,21 @@
+﻿@model Brand
+@{
+    ViewData["Title"] = "افزودن برند";
+}
+
+<h1 style="text-align:center;font-family:IRANYekan,sans-serif;">افزودن برند جدید</h1>
+
+<div class="container">
+    <form asp-action="CreateBrand" method="post">
+        <div class="form-group">
+            <label asp-for="BrandName">نام برند</label>
+            <input class="form-control" asp-for="BrandName" />
+        </div>
+
+        <button type="submit" class="btn btn-outline-success" style="margin-right:45%;">ثبت اطلاعات</button>
+
+    </form>
+
+
+</div>
+

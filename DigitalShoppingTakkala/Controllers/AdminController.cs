@@ -62,6 +62,21 @@ namespace DigitalShoppingTakkala.Controllers
             _ctx.SaveChanges();
             return RedirectToAction("Index");
         }
-        
+
+        public IActionResult CreateBrand()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult CreateBrand([Bind("BrandId", "BrandName")]Brand brand)
+
+        {
+            _ctx.Add(brand);
+            _ctx.SaveChanges();
+            return RedirectToAction("index");
+        }
+
+
     }
 }
