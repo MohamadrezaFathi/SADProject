@@ -15,10 +15,15 @@ namespace DigitalShoppingTakkala.Controllers
     {
         private MyContext _ctx;
 
+      
+
         public ProductController(MyContext ctx)
         {
             _ctx = ctx;
         }
+
+      
+
         public IActionResult GetAllBySGID(int id,int? brandshow,string sorting,string choiceprice,int? choicebrand,int? choiceyear)
         {
             
@@ -136,5 +141,7 @@ namespace DigitalShoppingTakkala.Controllers
             _ctx.SaveChanges();
             return RedirectToAction("GetProductByid", new { id = mid });
         }
+
+
     }
 }

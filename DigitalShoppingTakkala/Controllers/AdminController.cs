@@ -21,7 +21,12 @@ namespace DigitalShoppingTakkala.Controllers
                 _ctx = ctx;
             _hostingEnvironment = hostEnvironment;
         }
-            public IActionResult Index()
+
+        public AdminController()
+        {
+        }
+
+        public IActionResult Index()
         {
             var information = _ctx.Products.ToList();
             return View(information);
